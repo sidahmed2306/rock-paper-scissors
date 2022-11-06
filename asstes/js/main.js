@@ -8,8 +8,10 @@ const radios = document.querySelectorAll(".radios");
 const count = document.querySelector(".rounds");
 const btn = document.querySelectorAll(".choiceBttn");
 const userOutput = document.querySelector("#user-output");
-const compOutput = document.querySelector("#copm-output");
+const compOutput = document.querySelector("#comp-output");
 const rockPaperScissor = document.querySelector("#lets-play");
+const userImgOutput = document.querySelector(".user-choice-img");
+const compImgOutput = document.querySelector(".comp-choice-img");
 const gamOver = document.querySelector(".i-tags");
 const rock = document.querySelector("#fist");
 const hand = document.querySelector("#hand");
@@ -30,45 +32,56 @@ let radioss;
 
 btn.forEach((el) => {
   el.addEventListener("click", () => {
-    mak.style.display = "none";
-
-    if (redio5.checked && roundCount < redio5.value) {
-      roundCount++;
-      count.innerHTML = `<h2>how many rounds?</h2> <h2> ${roundCount}/5</h2> `;
-      clikRock;
-      clikPaper;
-      clikScissor;
-    } else if (redio10.checked && roundCount < redio10.value) {
-      roundCount++;
-      count.innerHTML = `<h2>how many rounds?</h2> <h2> ${roundCount}/10</h2> `;
-      clikRock;
-      clikPaper;
-      clikScissor;
-    } else if (redio15.checked && roundCount < redio15.value) {
-      roundCount++;
-      count.innerHTML = `<h2>how many rounds?</h2> <h2> ${roundCount}/15</h2> `;
-      clikRock;
-      clikPaper;
-      clikScissor;
-    } else if (redio20.checked && roundCount < redio20.value) {
-      roundCount++;
-      count.innerHTML = `<h2>how many rounds?</h2> <h2> ${roundCount}/20</h2> `;
-      clikRock;
-      clikPaper;
-      clikScissor;
-    }
-    // check the winner
-    else {
-      if (punktStandUser == punktStandComputer && roundCount) {
-        rockPaperScissor.innerHTML = "draw";
-        gamOver.innerHTML = `Game Over`;
-      } else if (punktStandUser > punktStandComputer) {
-        rockPaperScissor.innerHTML = "you are the winner";
-        gamOver.innerHTML = `Game Over`;
-      } else if (punktStandUser < punktStandComputer) {
-        rockPaperScissor.innerHTML = "you need to train hard";
-        gamOver.innerHTML = `Game Over`;
+    if (
+      redio5.checked ||
+      redio10.checked ||
+      redio15.checked ||
+      redio20.checked
+    ) {
+      mak.style.display = "none";
+      if (redio5.checked && roundCount < redio5.value) {
+        roundCount++;
+        count.innerHTML = `<h2>how many rounds?</h2> <h2> ${roundCount}/5</h2> `;
+        clikRock;
+        clikPaper;
+        clikScissor;
+      } else if (redio10.checked && roundCount < redio10.value) {
+        roundCount++;
+        count.innerHTML = `<h2>how many rounds?</h2> <h2> ${roundCount}/10</h2> `;
+        clikRock;
+        clikPaper;
+        clikScissor;
+      } else if (redio15.checked && roundCount < redio15.value) {
+        roundCount++;
+        count.innerHTML = `<h2>how many rounds?</h2> <h2> ${roundCount}/15</h2> `;
+        clikRock;
+        clikPaper;
+        clikScissor;
+      } else if (redio20.checked && roundCount < redio20.value) {
+        roundCount++;
+        count.innerHTML = `<h2>how many rounds?</h2> <h2> ${roundCount}/20</h2> `;
+        clikRock;
+        clikPaper;
+        clikScissor;
       }
+      // check the winner
+      else {
+        if (punktStandUser == punktStandComputer && roundCount) {
+          rockPaperScissor.innerHTML = "draw";
+          gamOver.innerHTML = `<iframe src="https://giphy.com/embed/VL48WGMDjD64umCEkv" width="180" height="180" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="#"></a></p>`;
+        } else if (punktStandUser > punktStandComputer) {
+          rockPaperScissor.innerHTML = ` 
+        <div style="width:180"><iframe allow="fullscreen" frameBorder="0" height="180" src="https://giphy.com/embed/ymU3y5iWBjwpUDNXyz/video" width="180"></iframe></div>`;
+          gamOver.innerHTML = `Game Over`;
+        } else if (punktStandUser < punktStandComputer) {
+          rockPaperScissor.innerHTML = `<div style="width:180"><iframe allow="fullscreen" frameBorder="0" height="180" src="https://giphy.com/embed/7f4BbDPxyU4XwBKNnb/video" width="180"></iframe></div>`;
+          gamOver.innerHTML = `Game Over`;
+        }
+      }
+    } else {
+      count.style.outline = `2px solid red`;
+      howManyRounds.innerHTML = `Please choose how many rounds`;
+      howManyRounds.style.color = `red`;
     }
   });
 });
@@ -89,26 +102,28 @@ function computerTurn() {
       break;
   }
 }
-
 // ================================================================
 // -------------------------- ClickRock Function-------------------
 // ================================================================
 function clikRock(event) {
   event.preventDefault;
-  computerTurn();
-  player = 1;
-  if (computer == 1) {
-    rockPaperScissor.innerHTML = `<h2> player : 👊  Computer :  👊 </h2>`;
-  } else if (computer == 2) {
-    rockPaperScissor.innerHTML = `<h2> player : 👊  Computer :  🖐 </h2>`;
-    punktStandComputer++;
-    rock.style.animation = "highlightRed 1s";
-    compOutput.innerHTML = punktStandComputer;
-  } else if (computer == 3) {
-    rockPaperScissor.innerHTML = `<h2> player : 👊  Computer :  ✌️  </h2>`;
-    punktStandUser++;
-    userOutput.innerHTML = punktStandUser;
-    rock.style.animation = "highlightGreen 1s";
+  if (redio5.checked || redio10.checked || redio15.checked || redio20.checked) {
+    computerTurn();
+    player = 1;
+    userImgOutput.innerHTML = ` <i class="fas fa-hand-rock"></i>`;
+    if (computer == 1) {
+      compImgOutput.innerHTML = `<i class="fas fa-hand-rock"></i>`;
+    } else if (computer == 2) {
+      rock.style.animation = "highlightRed 1s";
+      compImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
+      punktStandComputer++;
+      compOutput.innerHTML = punktStandComputer;
+    } else if (computer == 3) {
+      rock.style.animation = "highlightGreen 1s";
+      punktStandUser++;
+      userOutput.innerHTML = punktStandUser;
+      compImgOutput.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
+    }
   }
 }
 // ===================================================================
@@ -116,20 +131,24 @@ function clikRock(event) {
 // ===================================================================
 function clikPaper(event) {
   event.preventDefault;
-  computerTurn();
-  player = 2;
-  if (computer == 1) {
-    rockPaperScissor.innerHTML = `<h2>player : 🖐  Computer : 👊 </h2>`;
-    punktStandUser++;
-    userOutput.innerHTML = punktStandUser;
-    hand.style.animation = "highlightGreen 1s";
-  } else if (computer == 2) {
-    rockPaperScissor.innerHTML = `<h2>player : 🖐  Computer : 🖐 </h2>`;
-  } else if (computer == 3) {
-    rockPaperScissor.innerHTML = `<h2>player : 🖐  Computer : ✌️ </h2>`;
-    punktStandComputer++;
-    compOutput.innerHTML = punktStandComputer;
-    hand.style.animation = "highlightRed 1s";
+  if (redio5.checked || redio10.checked || redio15.checked || redio20.checked) {
+    computerTurn();
+    player = 2;
+    userImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
+    if (computer == 1) {
+      hand.style.animation = "highlightGreen 1s";
+      compImgOutput.innerHTML = `<i class="fas fa-hand-rock"></i>`;
+      punktStandUser++;
+      userOutput.innerHTML = punktStandUser;
+    } else if (computer == 2) {
+      compImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
+    } else if (computer == 3) {
+      hand.style.animation = "highlightRed 1s";
+      compImgOutput.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
+
+      punktStandComputer++;
+      compOutput.innerHTML = punktStandComputer;
+    }
   }
 }
 // ===================================================================
@@ -137,19 +156,22 @@ function clikPaper(event) {
 // ===================================================================
 function clikScissor(event) {
   event.preventDefault;
-  computerTurn();
-  player = 3;
-  if (computer == 1) {
-    rockPaperScissor.innerHTML = `<h2>player : ✌️ Computer : 👊 </h2>`;
-    punktStandComputer++;
-    compOutput.innerHTML = punktStandComputer;
-    scissor.style.animation = "highlightRed 1s";
-  } else if (computer == 2) {
-    rockPaperScissor.innerHTML = `<h2>player : ✌️  Computer : 🖐 </h2>`;
-    punktStandUser++;
-    userOutput.innerHTML = punktStandUser;
-    scissor.style.animation = "highlightGreen 1s";
-  } else if (computer == 3) {
-    rockPaperScissor.innerHTML = `<h2>player : ✌️  Computer : ✌️ </h2>`;
+  if (redio5.checked || redio10.checked || redio15.checked || redio20.checked) {
+    computerTurn();
+    player = 3;
+    userImgOutput.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
+    if (computer == 1) {
+      scissor.style.animation = "highlightRed 1s";
+      compImgOutput.innerHTML = `<i class="fas fa-hand-rock"></i>`;
+      punktStandComputer++;
+      compOutput.innerHTML = punktStandComputer;
+    } else if (computer == 2) {
+      scissor.style.animation = "highlightGreen 1s";
+      compImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
+      punktStandUser++;
+      userOutput.innerHTML = punktStandUser;
+    } else if (computer == 3) {
+      compImgOutput.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
+    }
   }
 }

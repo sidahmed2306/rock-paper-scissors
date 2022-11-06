@@ -17,14 +17,7 @@
             <h2 id="how-many-rounds">how many rounds?</h2>
 
             <div class="radio">
-              <input
-                class="radios"
-                value="5"
-                type="radio"
-                name="1"
-                id="fünf"
-                checked
-              />
+              <input class="radios" value="5" type="radio" name="1" id="fünf" />
               <label for="">5</label>
               <input
                 class="radios"
@@ -56,14 +49,30 @@
           </div>
           <div class="result">
             <p class="user-comp user">USER</p>
-
-            <p id="user-output">0</p>
+            <div class="user">
+              <p id="user-output">0</p>
+              <div class="user-choice-img">
+                <i class="fas fa-hand-rock rocks"></i>
+                <i class="fas fa-hand-paper papers"></i>
+                <i class="fas fa-hand-scissors scissors"></i>
+              </div>
+            </div>
             <p>:</p>
-            <p id="copm-output">0</p>
+            <div class="comp">
+              <p id="comp-output">0</p>
+              <div class="comp-choice-img">
+                <i class="fas fa-hand-rock rocks"></i>
+                <i class="fas fa-hand-paper papers"></i>
+                <i class="fas fa-hand-scissors scissors"></i>
+              </div>
+            </div>
+
             <p class="user-comp comp">COMP</p>
           </div>
           <div class="options">
-            <h2 id="lets-play">let's play</h2>
+            <div class="lets">
+              <h2 id="lets-play">let's play</h2>
+            </div>
             <div class="i-tags">
               <button
                 class="choiceBttn bttn1"
@@ -72,7 +81,7 @@
                 id="fist"
                 href=""
               >
-                <i value="1" class="fa-regular fa-hand-back-fist i-global"></i>
+                <i class="fa-regular fa-hand-back-fist i-global"></i>
               </button>
               <button
                 class="choiceBttn bttn2"
@@ -81,7 +90,7 @@
                 id="hand"
                 href=""
               >
-                <i value="2" class="fa-regular fa-hand i-global"></i>
+                <i class="fa-regular fa-hand i-global"></i>
               </button>
               <button
                 class="choiceBttn bttn3"
@@ -90,7 +99,7 @@
                 id="scissor"
                 href=""
               >
-                <i value="3" class="fa-regular fa-hand-scissors i-global"></i>
+                <i class="fa-regular fa-hand-scissors i-global"></i>
               </button>
             </div>
             <h2 class="make">MAKE YOUR MOVE</h2>
