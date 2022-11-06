@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rock-paper-scissors</title>
+    <link rel="stylesheet" href="./asstes/css/style.css" />
+    <link rel="stylesheet" href="./asstes/css/all.min.css" />
+  </head>
+  <body>
+    <main>
+      <section id="submit">
+        <h1>Rock Paper Scissors</h1>
+        <div class="interface">
+          <div class="rounds">
+            <h2 id="how-many-rounds">how many rounds?</h2>
+
+            <div class="radio">
+              <input
+                class="radios"
+                value="5"
+                type="radio"
+                name="1"
+                id="fünf"
+                checked
+              />
+              <label for="">5</label>
+              <input
+                class="radios"
+                value="10"
+                type="radio"
+                name="1"
+                id="zehn"
+              />
+              <label for="">10</label>
+            </div>
+            <div class="">
+              <input
+                class="radios"
+                value="15"
+                type="radio"
+                name="1"
+                id="fünfzehn"
+              />
+              <label for="">15</label>
+              <input
+                class="radios"
+                value="20"
+                type="radio"
+                name="1"
+                id="zwanzig"
+              />
+              <label for="">20</label>
+            </div>
+          </div>
+          <div class="result">
+            <p class="user-comp user">USER</p>
+
+            <p id="user-output">0</p>
+            <p>:</p>
+            <p id="copm-output">0</p>
+            <p class="user-comp comp">COMP</p>
+          </div>
+          <div class="options">
+            <h2 id="lets-play">let's play</h2>
+            <div class="i-tags">
+              <button
+                class="choiceBttn bttn1"
+                value="1"
+                onclick="clikRock(event)"
+                id="fist"
+                href=""
+              >
+                <i value="1" class="fa-regular fa-hand-back-fist i-global"></i>
+              </button>
+              <button
+                class="choiceBttn bttn2"
+                value="2"
+                onclick="clikPaper(event)"
+                id="hand"
+                href=""
+              >
+                <i value="2" class="fa-regular fa-hand i-global"></i>
+              </button>
+              <button
+                class="choiceBttn bttn3"
+                value="3"
+                onclick="clikScissor(event)"
+                id="scissor"
+                href=""
+              >
+                <i value="3" class="fa-regular fa-hand-scissors i-global"></i>
+              </button>
+            </div>
+            <h2 class="make">MAKE YOUR MOVE</h2>
+            <a id="restart" href="./index.html">restart</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./asstes/js/main.js"></script>
+  </body>
+</html>
