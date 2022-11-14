@@ -89,23 +89,21 @@ btn.forEach((el) => {
 // --------------------------the computerTurn Function----------------
 // ===================================================================
 function computerTurn() {
-  // const compChoice = Math.floor(Math.random() * 3) + 1;
-  // switch (compChoice) {
-  //   case 1:
-  //     computer = 1;
-  //     break;
-  //   case 2:
-  //     computer = 2;
-  //     break;
-  //   case 3:
-  //     computer = 3;
-  //     break;
-  // }
-  computer = 3;
+  computer = Math.floor(Math.random() * 3) + 1;
 }
 // ================================================================
 // -------------------------- ClickRock Function-------------------
 // ================================================================
+function removRed() {
+  rock.classList.remove("btnred");
+  hand.classList.remove("btnred");
+  scissor.classList.remove("btnred");
+}
+function removGreen() {
+  rock.classList.remove("btngreen");
+  hand.classList.remove("btngreen");
+  scissor.classList.remove("btngreen");
+}
 function clikRock(event) {
   event.preventDefault;
   if (redio5.checked || redio10.checked || redio15.checked || redio20.checked) {
@@ -116,14 +114,14 @@ function clikRock(event) {
       compImgOutput.innerHTML = `<i class="fas fa-hand-rock"></i>`;
     } else if (computer == 2) {
       // rock.style.animation = "highlightRed 1s";
-      rock.classList.remove("btnred");
       rock.classList.add("btnred");
+      setTimeout(removRed, 1000);
       compImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
       punktStandComputer++;
       compOutput.innerHTML = punktStandComputer;
     } else if (computer == 3) {
-      rock.classList.remove("btngreen");
       rock.classList.add("btngreen");
+      setTimeout(removGreen, 1000);
       // rock.style.animation = "highlightGreen 1s";
       punktStandUser++;
       userOutput.innerHTML = punktStandUser;
@@ -141,14 +139,19 @@ function clikPaper(event) {
     player = 2;
     userImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
     if (computer == 1) {
-      hand.style.animation = "highlightGreen 1s";
+      // hand.style.animation = "highlightGreen 1s";
+      setTimeout(removGreen, 1000);
+      hand.classList.add("btngreen");
+
       compImgOutput.innerHTML = `<i class="fas fa-hand-rock"></i>`;
       punktStandUser++;
       userOutput.innerHTML = punktStandUser;
     } else if (computer == 2) {
       compImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
     } else if (computer == 3) {
-      hand.style.animation = "highlightRed 1s";
+      // hand.style.animation = "highlightRed 1s";
+      setTimeout(removRed, 1000);
+      hand.classList.add("btnred");
       compImgOutput.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
 
       punktStandComputer++;
@@ -166,12 +169,16 @@ function clikScissor(event) {
     player = 3;
     userImgOutput.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
     if (computer == 1) {
-      scissor.style.animation = "highlightRed 1s";
+      // scissor.style.animation = "highlightRed 1s";
+      setTimeout(removRed, 1000);
+      scissor.classList.add("btnred");
       compImgOutput.innerHTML = `<i class="fas fa-hand-rock"></i>`;
       punktStandComputer++;
       compOutput.innerHTML = punktStandComputer;
     } else if (computer == 2) {
-      scissor.style.animation = "highlightGreen 1s";
+      // scissor.style.animation = "highlightGreen 1s";
+      scissor.classList.add("btngreen");
+      setTimeout(removGreen, 1000);
       compImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
       punktStandUser++;
       userOutput.innerHTML = punktStandUser;
