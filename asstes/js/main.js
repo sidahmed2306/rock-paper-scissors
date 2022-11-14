@@ -89,18 +89,19 @@ btn.forEach((el) => {
 // --------------------------the computerTurn Function----------------
 // ===================================================================
 function computerTurn() {
-  const compChoice = Math.floor(Math.random() * 3) + 1;
-  switch (compChoice) {
-    case 1:
-      computer = 1;
-      break;
-    case 2:
-      computer = 2;
-      break;
-    case 3:
-      computer = 3;
-      break;
-  }
+  // const compChoice = Math.floor(Math.random() * 3) + 1;
+  // switch (compChoice) {
+  //   case 1:
+  //     computer = 1;
+  //     break;
+  //   case 2:
+  //     computer = 2;
+  //     break;
+  //   case 3:
+  //     computer = 3;
+  //     break;
+  // }
+  computer = 3;
 }
 // ================================================================
 // -------------------------- ClickRock Function-------------------
@@ -110,16 +111,20 @@ function clikRock(event) {
   if (redio5.checked || redio10.checked || redio15.checked || redio20.checked) {
     computerTurn();
     player = 1;
-    userImgOutput.innerHTML = ` <i class="fas fa-hand-rock"></i>`;
+    userImgOutput.innerHTML = `<i class="fas fa-hand-rock"></i>`;
     if (computer == 1) {
       compImgOutput.innerHTML = `<i class="fas fa-hand-rock"></i>`;
     } else if (computer == 2) {
-      rock.style.animation = "highlightRed 1s";
+      // rock.style.animation = "highlightRed 1s";
+      rock.classList.remove("btnred");
+      rock.classList.add("btnred");
       compImgOutput.innerHTML = `<i class="fas fa-hand-paper"></i>`;
       punktStandComputer++;
       compOutput.innerHTML = punktStandComputer;
     } else if (computer == 3) {
-      rock.style.animation = "highlightGreen 1s";
+      rock.classList.remove("btngreen");
+      rock.classList.add("btngreen");
+      // rock.style.animation = "highlightGreen 1s";
       punktStandUser++;
       userOutput.innerHTML = punktStandUser;
       compImgOutput.innerHTML = `<i class="fas fa-hand-scissors"></i>`;
